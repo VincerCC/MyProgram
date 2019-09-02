@@ -1,12 +1,11 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
+  <!--display:{{isShow?"block":"none"}}动态设置按钮的显示与隐藏，bindgetuserinfo回调能获得用户点击的是不是允许-->
+    <button style='display:{{isShow?"block":"none"}}' open-type="getUserInfo" bindgetuserinfo='handGetUserInfo'> 获取头像昵称 </button>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
+       </view>
   <view catchtap='btnIn' class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>

@@ -1,5 +1,10 @@
-//app.js
+ //app.js
 App({
+  data:{
+    isplay:false,
+    pageindex:null,
+    moviesArr:[]
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

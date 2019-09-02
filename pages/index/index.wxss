@@ -1,6 +1,5 @@
 /**index.wxss**/
 page{
-  height: 100%;
   background-color:#ffeaa7;
 }
 .userinfo {

@@ -1,13 +1,36 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/list/list",
+    "pages/movies/movies",
+    "pages/detail/detail",
+    "pages/logs/logs",
+    "pages/movies_detail/movies_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffeaa7",
-    "navigationBarTitleText": "lyc",
+    "navigationBarTitleText": "动漫周刊",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "backgroundColor": "#ffeaa7",
+    "selectedColor": "#f9ca24",
+    "color": "#95afc0",
+    "list": [
+      {
+        "pagePath": "pages/list/list",
+        "text": "文与字",
+        "iconPath": "images/icon/sb_n.png",
+        "selectedIconPath": "images/icon/sb.png"
+      },
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "电影",
+        "iconPath": "images/icon/movies_n.png",
+        "selectedIconPath": "images/icon/movies.png"
+      }
+    ]
+  }
 }

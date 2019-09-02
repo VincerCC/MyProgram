@@ -6,10 +6,16 @@ Page({
   data: {
     motto: '开启小程序的初次邂逅',
     userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    isShow:true
   },
   btnIn:function(){
+    //点击跳转到list页面
+    //wx.redirectTo关闭当前页面再跳转，,但是不能跳转到包含tabBar的界面
+    // wx.navigateTo保留当前页面再跳转（能回退）,但是不能跳转到包含tabBar的界面
+    //wx.switchTab跳转到包含tabBar的界面，并且关闭其他非tabBar页面
+    wx.switchTab({
+      url: "/pages/list/list"
+    })
   },
   //事件处理函数
   bindViewTap: function() {
@@ -17,40 +23,44 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
+  /*生命周期函数，onload监听页面加载*/
+  onLoad: function (options) {
+    this.getUserInfo();
+  },
+  getUserInfo(data){
+    //判断用户是否授权了
+    wx.getSetting({
+      success: (data) => {
+        
+        if (data.authSetting["scope.userInfo"]) {
+          //用户已经授权
           this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+            isShow: false
+          });
+        } else {
+          //用户没有授权
+          this.setData({
+            isShow: true
+          });
+        }
+      }
+    })
+    //获取用户信息
+    wx.getUserInfo({
+      success: (data) => {
+        console.log(data);
+        //更新data中的userInfo
+        this.setData({
+          userInfo: data.userInfo
           })
         }
       })
+    },
+  handGetUserInfo(data){
+    //判断用户点击的是否是允许
+    if(data.detail.rawData){
+      //用户点击的是允许
+      this.getUserInfo();
     }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
   }
 })

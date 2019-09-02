@@ -1,0 +1,35 @@
+<!--pages/list/list.wxml-->
+<!--
+indicator-dots='true'显示导航指示点
+indicator-color='#f6e58d'导航指示点颜色
+indicator-active-color='#f0932b'当前选中导航指示点颜色
+autoplay='true'开启自动切换
+interval='3000'自动切换设置为3000ms
+circular='true'开启衔接切换
+-->
+<import src='/pages/template/listTemplate.wxml'/><!--引入模板结构-->
+<view>
+<swiper indicator-dots='true' indicator-color='#f6e58d' indicator-active-color='#f0932b' autoplay='true' interval='3000' circular='true' catchtap='navbtn'>
+    <swiper-item >
+      <image src='/images/1.jpg' data-index='0'> </image>
+    </swiper-item>
+    <swiper-item >
+      <image src='/images/2.jpg' data-index='1'> </image>
+    </swiper-item>
+    <swiper-item >
+      <image src='/images/3.jpg' data-index='2'> </image>
+    </swiper-item>
+    <swiper-item >
+      <image src='/images/4.jpg' data-index='3'> </image>
+    </swiper-item>
+    <swiper-item >
+      <image src='/images/5.jpg' data-index='4'> </image>
+    </swiper-item>
+  </swiper>
+  <block wx:for='{{listArr}}' wx:key='{{index}}'>
+      <view catchtap='toDetali' data-index='{{index}}'>
+        <template is='listTmp' data='{{...item}}'/>
+      </view>
+  </block>
+  
+</view>
