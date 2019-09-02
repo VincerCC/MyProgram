@@ -1,5 +1,5 @@
 ### 项目预览：
-![img](https://github.com/VincerCC/Anime-Page/blob/master/Anime%20Page/%E6%95%88%E6%9E%9C%E5%9B%BE.png)
+![img](https://github.com/VincerCC/11/blob/master/images/%E5%8A%A8%E6%BC%AB%E5%B0%8F%E7%A8%8B%E5%BA%8F.png)
 
 ## 小程序
 ### 什么是小程序？
